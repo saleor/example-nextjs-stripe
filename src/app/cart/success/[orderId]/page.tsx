@@ -72,7 +72,6 @@ export default async function CartSuccessPage({ params }: { params: { orderId: s
 					</tr>
 				</tfoot>
 			</table>
-			<dl></dl>
 		</article>
 	);
 }
