@@ -1,4 +1,6 @@
-import type { TypedDocumentString } from "@/generated/graphql";
+import { GetCheckoutByIdDocument, type TypedDocumentString } from "@/generated/graphql";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 type GraphQlError = {
 	message: string;
@@ -14,10 +16,11 @@ export async function executeGraphQL<Result, Variables>({
 	cache,
 }: {
 	query: TypedDocumentString<Result, Variables>;
-	variables: Variables;
 	headers?: HeadersInit;
 	cache?: RequestCache;
-}): Promise<Result> {
+} & (Variables extends { [key: string]: never }
+	? { variables?: never }
+	: { variables: Variables })): Promise<Result> {
 	if (!endpoint) {
 		throw new Error("Missing SALEOR_API_URL");
 	}
@@ -38,8 +41,40 @@ export async function executeGraphQL<Result, Variables>({
 	const body = (await result.json()) as GraphQlErrorRespone<Result>;
 
 	if ("errors" in body) {
-		throw body.errors[0];
+		throw new Error(`GraphQL Error`, { cause: body.errors });
 	}
 
 	return body.data;
 }
+
+export async function getCheckoutFromCookiesOrRedirect() {
+	const checkoutId = cookies().get("checkoutId")?.value;
+
+	if (!checkoutId) {
+		redirect("/");
+	}
+
+	const checkout = await executeGraphQL({
+		query: GetCheckoutByIdDocument,
+		variables: {
+			id: checkoutId,
+		},
+		cache: "no-store",
+	});
+
+	if (!checkout.checkout) {
+		// https://github.com/vercel/next.js/issues/51875
+		// cookies().set("checkoutId", "");
+		redirect("/");
+	}
+
+	return checkout.checkout;
+}
+
+export const stripeAppId = `app.saleor.stripe`;
+
+export const formatMoney = (amount: number, currency: string) =>
+	new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency,
+	}).format(amount);

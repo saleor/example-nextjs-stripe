@@ -1,7 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ProductListDocument } from "@/generated/graphql";
-import { executeGraphQL } from "@/lib";
+import { notFound, redirect } from "next/navigation";
+import { CreateCheckoutDocument, ProductListDocument } from "@/generated/graphql";
+import { executeGraphQL, formatMoney } from "@/lib";
+import { cookies } from "next/headers";
 
 export const metadata = {
 	title: "Product List | Saleor Storefront",
@@ -10,42 +11,66 @@ export const metadata = {
 export default async function Page() {
 	const data = await executeGraphQL({
 		query: ProductListDocument,
-		variables: {
-			channel: "default-channel",
-			first: 12,
-		},
 	});
 
+	const product = data.products?.edges[0].node;
+
+	if (!product?.defaultVariant) {
+		notFound();
+	}
+	const variant = product.defaultVariant;
+
+	async function addToCart() {
+		"use server";
+
+		const response = await executeGraphQL({
+			query: CreateCheckoutDocument,
+			variables: {
+				variantId: variant.id,
+			},
+			cache: "no-store",
+		});
+
+		if (!response.checkoutCreate?.checkout?.id) {
+			throw new Error("Failed to create checkout");
+		}
+
+		cookies().set("checkoutId", response.checkoutCreate.checkout.id);
+		redirect("/cart");
+	}
+
 	return (
-		<div className="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-			{data.products?.edges.map(({ node: product }) => {
-				return (
-					<Link href={`/products/${product.id}`} key={product.id}>
-						<div>
-							<div className="min-h-80 h-80 overflow-hidden rounded-md border bg-slate-50 hover:bg-slate-100">
-								{product.thumbnail && (
-									<Image
-										width={256}
-										height={256}
-										alt={product.thumbnail.alt || ""}
-										src={product.thumbnail.url}
-										className="h-full w-full object-cover object-center p-4 hover:scale-105"
-									/>
-								)}
-							</div>
-							<div className="mt-2 flex justify-between">
-								<div>
-									<h3 className="text-sm font-semibold text-gray-700">{product.name}</h3>
-									<p className="text-sm text-gray-500">{product.category?.name}</p>
-								</div>
-								<p className="text-sm font-medium text-gray-900">
-									${product.pricing?.priceRange?.start?.gross.amount}
-								</p>
-							</div>
-						</div>
-					</Link>
-				);
-			})}
+		<div className="flex">
+			<div className="w-1/3 flex-none">
+				<div className="rounded-md border bg-slate-50">
+					{product.thumbnail && (
+						<Image
+							alt={product.thumbnail.alt || ""}
+							src={product.thumbnail.url}
+							width={256}
+							height={256}
+							className="h-full w-full object-cover"
+						/>
+					)}
+				</div>
+			</div>
+			{/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+			<form className="flex flex-auto px-6" action={addToCart}>
+				<div className="flex flex-col">
+					<h1 className="flex-auto text-5xl font-semibold text-slate-900">{product.name}</h1>
+					<div className="text-lg font-semibold text-slate-500">
+						{variant.pricing?.price &&
+							formatMoney(variant.pricing.price.gross.amount, variant.pricing.price.gross.currency)}
+					</div>
+					<div className="mt-2 w-full flex-none text-sm font-medium text-slate-700">In stock</div>
+					<button
+						type="submit"
+						className="mt-2 rounded-md border bg-slate-900 px-8 py-2 text-lg text-white hover:bg-slate-800"
+					>
+						Add to cart
+					</button>
+				</div>
+			</form>
 		</div>
 	);
 }
