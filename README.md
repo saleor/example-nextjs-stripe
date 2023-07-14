@@ -6,10 +6,6 @@
   <p>A minimalistic example of using <a href="https://github.com/saleor/saleor">Saleor</a> with <a href="https://stripe.com">Stripe</a>.</p>
 </div>
 
-
-https://github.com/saleor/example-nextjs-stripe/assets/1338731/2c387a4e-5271-4c32-866e-241c593116a2
-
-
 <div align="center">
   <a href="https://saleor.io/">🏠 Website</a>
   <span> • </span>
@@ -21,6 +17,8 @@ https://github.com/saleor/example-nextjs-stripe/assets/1338731/2c387a4e-5271-4c3
   <span> • </span>
   <a href="https://discord.gg/H52JTZAtSH">💬 Discord</a>
 </div>
+
+https://github.com/saleor/example-nextjs-stripe/assets/1338731/2c387a4e-5271-4c32-866e-241c593116a2
 
 ## Quickstart
 
