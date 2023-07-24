@@ -10,7 +10,7 @@ export default async function CartPaymentPage({
 	searchParams: { payment_intent?: string; payment_intent_client_secret?: string };
 }) {
 	if (!searchParams.payment_intent || !searchParams.payment_intent_client_secret) {
-		redirect("/");
+		redirect("/app-router");
 	}
 
 	const checkout = await getCheckoutFromCookiesOrRedirect();
@@ -50,10 +50,9 @@ export default async function CartPaymentPage({
 		return <p>Payment processing. We&apos;ll update you when payment is received.</p>;
 	}
 	if (paymentIntent.status === "requires_payment_method") {
-		redirect("/cart");
+		redirect("/app-router/cart");
 	}
 	if (paymentIntent.status === "succeeded") {
-		// redirect("/cart/success");
 		const order = await executeGraphQL({
 			query: CheckoutCompleteDocument,
 			variables: {
@@ -72,6 +71,6 @@ export default async function CartPaymentPage({
 				</div>
 			);
 		}
-		redirect(`/cart/success/${order.checkoutComplete.order.id}`);
+		redirect(`/app-router/cart/success/${order.checkoutComplete.order.id}`);
 	}
 }

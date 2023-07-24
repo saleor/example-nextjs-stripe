@@ -3,7 +3,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useMemo } from "react";
-import CheckoutForm from "@/app/cart/checkoutForm";
+import CheckoutForm from "@/app/app-router/cart/checkoutForm";
 
 export const StripeComponent = ({
 	clientSecret,

@@ -2,10 +2,11 @@ import Image from "next/image";
 import { GetOrderByIdDocument } from "@/generated/graphql";
 import { executeGraphQL, formatMoney } from "@/lib";
 import { notFound, redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function CartSuccessPage({ params }: { params: { orderId: string } }) {
 	if (!params.orderId) {
-		redirect("/");
+		redirect("/app-router/");
 	}
 
 	const { order } = await executeGraphQL({
@@ -72,6 +73,12 @@ export default async function CartSuccessPage({ params }: { params: { orderId: s
 					</tr>
 				</tfoot>
 			</table>
+			<Link
+				className="mt-8 inline-block rounded-md border px-4 py-2 text-xl font-bold text-blue-500 shadow-md hover:text-blue-400 hover:underline"
+				href="/"
+			>
+				Back to the homepage
+			</Link>
 		</article>
 	);
 }

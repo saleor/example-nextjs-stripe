@@ -51,7 +51,7 @@ export async function getCheckoutFromCookiesOrRedirect() {
 	const checkoutId = cookies().get("checkoutId")?.value;
 
 	if (!checkoutId) {
-		redirect("/");
+		redirect("/app-router/");
 	}
 
 	const checkout = await executeGraphQL({
@@ -65,7 +65,7 @@ export async function getCheckoutFromCookiesOrRedirect() {
 	if (!checkout.checkout) {
 		// https://github.com/vercel/next.js/issues/51875
 		// cookies().set("checkoutId", "");
-		redirect("/");
+		redirect("/app-router/");
 	}
 
 	return checkout.checkout;
