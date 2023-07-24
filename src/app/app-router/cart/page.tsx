@@ -1,6 +1,7 @@
-import { executeGraphQL, getCheckoutFromCookiesOrRedirect, stripeAppId } from "@/lib";
+import { executeGraphQL, getCheckoutFromCookiesOrRedirect } from "@/lib/app-router";
 import { TransactionInitializeDocument } from "@/generated/graphql";
-import { StripeComponent } from "@/app/app-router/cart/stripeComponent";
+import { StripeComponent } from "@/ui/components/stripeComponent";
+import { stripeAppId } from "@/lib/common";
 
 export default async function CartPage() {
 	const checkout = await getCheckoutFromCookiesOrRedirect();
@@ -63,6 +64,7 @@ export default async function CartPage() {
 			<StripeComponent
 				clientSecret={stripeData.paymentIntent.client_secret}
 				publishableKey={stripeData.publishableKey}
+				returnUrl="http://localhost:3000/app-router/cart/payment"
 			/>
 		</div>
 	);

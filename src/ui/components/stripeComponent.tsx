@@ -3,20 +3,22 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useMemo } from "react";
-import CheckoutForm from "@/app/app-router/cart/checkoutForm";
+import CheckoutForm from "@/ui/components/checkoutForm";
 
 export const StripeComponent = ({
 	clientSecret,
 	publishableKey,
+	returnUrl,
 }: {
 	clientSecret: string;
 	publishableKey: string;
+	returnUrl: string;
 }) => {
 	const stripePromise = useMemo(() => loadStripe(publishableKey), [publishableKey]);
 
 	return (
 		<Elements options={{ clientSecret, appearance: { theme: "stripe" } }} stripe={stripePromise}>
-			<CheckoutForm />
+			<CheckoutForm returnUrl={returnUrl} />
 		</Elements>
 	);
 };

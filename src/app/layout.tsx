@@ -1,6 +1,6 @@
-import Banner from "@/ui/components/Banner";
-import "./global.css";
-import "./stripe.css";
+import { Banner } from "@/ui/components/Banner";
+import "../global.css";
+import "../stripe.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (

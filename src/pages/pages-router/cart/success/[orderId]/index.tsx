@@ -1,31 +1,29 @@
 import Image from "next/image";
-import { GetOrderByIdDocument } from "@/generated/graphql";
-import { notFound, redirect } from "next/navigation";
+import { GetOrderByIdDocument, GetOrderByIdQuery, GetOrderByIdQueryVariables } from "@/generated/graphql";
 import Link from "next/link";
-import { executeGraphQL, formatMoney } from "@/lib/common";
+import { formatMoney } from "@/lib/common";
+import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 
-export default async function CartSuccessPage({ params }: { params: { orderId: string } }) {
-	if (!params.orderId) {
-		redirect("/app-router/");
-	}
-
-	const { order } = await executeGraphQL({
-		query: GetOrderByIdDocument,
-		variables: {
-			orderId: params.orderId,
-		},
+export default function CartSuccessPage() {
+	const router = useRouter();
+	const { data: orderResponse, loading: loadingOrder } = useQuery<
+		GetOrderByIdQuery,
+		GetOrderByIdQueryVariables
+	>(gql(GetOrderByIdDocument.toString()), {
+		variables: { orderId: router.query.orderId as string },
 	});
 
-	if (!order) {
-		notFound();
+	if (!orderResponse?.order || loadingOrder) {
+		return;
 	}
 
 	return (
 		<article>
-			<h1 className="text-5xl">Order #{order.number} summary</h1>
+			<h1 className="text-5xl">Order #{orderResponse.order.number} summary</h1>
 			<p className="text-2xl">Thank you for your order!</p>
 			<p className="my-4">
-				Order status: <strong>{order.statusDisplay}</strong>
+				Order status: <strong>{orderResponse.order.statusDisplay}</strong>
 			</p>
 
 			<table className="table-auto">
@@ -38,7 +36,7 @@ export default async function CartSuccessPage({ params }: { params: { orderId: s
 					</tr>
 				</thead>
 				<tbody>
-					{order.lines.map((line) => (
+					{orderResponse.order.lines.map((line) => (
 						<tr key={line.id} className="border-t">
 							<td>
 								{line.thumbnail?.url && <Image src={line.thumbnail?.url} alt="" width={64} height={64} />}
@@ -57,9 +55,11 @@ export default async function CartSuccessPage({ params }: { params: { orderId: s
 							Total
 						</td>
 						<td className="px-4 py-2">
-							{formatMoney(order.total.gross.amount, order.total.gross.currency)}{" "}
+							{formatMoney(orderResponse.order.total.gross.amount, orderResponse.order.total.gross.currency)}{" "}
 							<span className="font-normal italic">
-								(including {formatMoney(order.total.tax.amount, order.total.tax.currency)} tax)
+								(including{" "}
+								{formatMoney(orderResponse.order.total.tax.amount, orderResponse.order.total.tax.currency)}{" "}
+								tax)
 							</span>
 						</td>
 					</tr>
@@ -68,7 +68,10 @@ export default async function CartSuccessPage({ params }: { params: { orderId: s
 							Paid
 						</td>
 						<td className="px-4 py-2">
-							{formatMoney(order.totalCharged.amount, order.totalCharged.currency)}
+							{formatMoney(
+								orderResponse.order.totalCharged.amount,
+								orderResponse.order.totalCharged.currency,
+							)}
 						</td>
 					</tr>
 				</tfoot>

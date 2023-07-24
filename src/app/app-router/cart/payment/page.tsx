@@ -1,7 +1,8 @@
-import { executeGraphQL, getCheckoutFromCookiesOrRedirect, stripeAppId } from "@/lib";
+import { getCheckoutFromCookiesOrRedirect } from "@/lib/app-router";
 import Stripe from "stripe";
 import { CheckoutCompleteDocument, PaymentGatewayInitializeDocument } from "@/generated/graphql";
 import { redirect } from "next/navigation";
+import { executeGraphQL, stripeAppId } from "@/lib/common";
 
 export default async function CartPaymentPage({
 	searchParams,

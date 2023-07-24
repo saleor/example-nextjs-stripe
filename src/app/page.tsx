@@ -14,7 +14,7 @@ export default function RootPage() {
 				</li>
 				<li>
 					<a
-						href="…"
+						href="/pages-router"
 						className="flex h-36 w-72 items-center justify-center rounded-md border text-2xl font-bold shadow-md transition-shadow hover:shadow-lg"
 					>
 						Next.js Pages Router

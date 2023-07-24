@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
 import { CreateCheckoutDocument, ProductListDocument } from "@/generated/graphql";
-import { executeGraphQL, formatMoney } from "@/lib";
+import { executeGraphQL } from "@/lib/app-router";
 import { cookies } from "next/headers";
+import { formatMoney } from "@/lib/common";
 
 export const metadata = {
 	title: "Product List | Saleor Storefront",

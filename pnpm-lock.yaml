@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@apollo/client':
+    specifier: 3.7.17
+    version: registry.npmjs.org/@apollo/client@3.7.17(graphql@16.7.1)(react-dom@18.2.0)(react@18.2.0)
   '@stripe/react-stripe-js':
     specifier: 2.1.1
     version: registry.npmjs.org/@stripe/react-stripe-js@2.1.1(@stripe/stripe-js@1.54.1)(react-dom@18.2.0)(react@18.2.0)
@@ -5361,6 +5364,45 @@ packages:
       '@jridgewell/gen-mapping': registry.npmjs.org/@jridgewell/gen-mapping@0.3.3
       '@jridgewell/trace-mapping': registry.npmjs.org/@jridgewell/trace-mapping@0.3.18
 
+  registry.npmjs.org/@apollo/client@3.7.17(graphql@16.7.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-0EErSHEtKPNl5wgWikHJbKFAzJ/k11O0WO2QyqZSHpdxdAnw7UWHY4YiLbHCFG7lhrD+NTQ3Z/H9Jn4rcikoJA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@apollo/client/-/client-3.7.17.tgz}
+    id: registry.npmjs.org/@apollo/client/3.7.17
+    name: '@apollo/client'
+    version: 3.7.17
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+      graphql-ws: ^5.5.5
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      subscriptions-transport-ws: ^0.9.0 || ^0.11.0
+    peerDependenciesMeta:
+      graphql-ws:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      subscriptions-transport-ws:
+        optional: true
+    dependencies:
+      '@graphql-typed-document-node/core': registry.npmjs.org/@graphql-typed-document-node/core@3.2.0(graphql@16.7.1)
+      '@wry/context': registry.npmjs.org/@wry/context@0.7.3
+      '@wry/equality': registry.npmjs.org/@wry/equality@0.5.6
+      '@wry/trie': registry.npmjs.org/@wry/trie@0.4.3
+      graphql: 16.7.1
+      graphql-tag: registry.npmjs.org/graphql-tag@2.12.6(graphql@16.7.1)
+      hoist-non-react-statics: registry.npmjs.org/hoist-non-react-statics@3.3.2
+      optimism: registry.npmjs.org/optimism@0.16.2
+      prop-types: registry.npmjs.org/prop-types@15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      response-iterator: registry.npmjs.org/response-iterator@0.2.6
+      symbol-observable: registry.npmjs.org/symbol-observable@4.0.0
+      ts-invariant: registry.npmjs.org/ts-invariant@0.10.3
+      tslib: registry.npmjs.org/tslib@2.6.0
+      zen-observable-ts: registry.npmjs.org/zen-observable-ts@1.2.5
+    dev: false
+
   registry.npmjs.org/@babel/code-frame@7.22.5:
     resolution: {integrity: sha512-Xmwn266vad+6DAqEB2A6V/CcZVp62BbwVmcOJc2RPuwih1kw02TjQvWVWlcKGbBPd+8/0V5DEkOcizRGYsspYQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.22.5.tgz}
     name: '@babel/code-frame'
@@ -5576,6 +5618,17 @@ packages:
       '@babel/helper-string-parser': registry.npmjs.org/@babel/helper-string-parser@7.22.5
       '@babel/helper-validator-identifier': registry.npmjs.org/@babel/helper-validator-identifier@7.22.5
       to-fast-properties: registry.npmjs.org/to-fast-properties@2.0.0
+
+  registry.npmjs.org/@graphql-typed-document-node/core@3.2.0(graphql@16.7.1):
+    resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@graphql-typed-document-node/core/-/core-3.2.0.tgz}
+    id: registry.npmjs.org/@graphql-typed-document-node/core/3.2.0
+    name: '@graphql-typed-document-node/core'
+    version: 3.2.0
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      graphql: 16.7.1
+    dev: false
 
   registry.npmjs.org/@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz}
@@ -5853,6 +5906,42 @@ packages:
     name: '@types/node'
     version: 20.4.2
 
+  registry.npmjs.org/@wry/context@0.7.3:
+    resolution: {integrity: sha512-Nl8WTesHp89RF803Se9X3IiHjdmLBrIvPMaJkl+rKVJAYyPsz1TEUbu89943HpvujtSJgDUx9W4vZw3K1Mr3sA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@wry/context/-/context-0.7.3.tgz}
+    name: '@wry/context'
+    version: 0.7.3
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
+  registry.npmjs.org/@wry/equality@0.5.6:
+    resolution: {integrity: sha512-D46sfMTngaYlrH+OspKf8mIJETntFnf6Hsjb0V41jAXJ7Bx2kB8Rv8RCUujuVWYttFtHkUNp7g+FwxNQAr6mXA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@wry/equality/-/equality-0.5.6.tgz}
+    name: '@wry/equality'
+    version: 0.5.6
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
+  registry.npmjs.org/@wry/trie@0.3.2:
+    resolution: {integrity: sha512-yRTyhWSls2OY/pYLfwff867r8ekooZ4UI+/gxot5Wj8EFwSf2rG+n+Mo/6LoLQm1TKA4GRj2+LCpbfS937dClQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@wry/trie/-/trie-0.3.2.tgz}
+    name: '@wry/trie'
+    version: 0.3.2
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
+  registry.npmjs.org/@wry/trie@0.4.3:
+    resolution: {integrity: sha512-I6bHwH0fSf6RqQcnnXLJKhkSXG45MFral3GxPaY4uAl0LYDZM+YDVDAiU9bYwjTuysy1S0IeecWtmq1SZA3M1w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@wry/trie/-/trie-0.4.3.tgz}
+    name: '@wry/trie'
+    version: 0.4.3
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
   registry.npmjs.org/ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz}
     name: ansi-styles
@@ -5980,6 +6069,19 @@ packages:
     version: 11.12.0
     engines: {node: '>=4'}
 
+  registry.npmjs.org/graphql-tag@2.12.6(graphql@16.7.1):
+    resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/graphql-tag/-/graphql-tag-2.12.6.tgz}
+    id: registry.npmjs.org/graphql-tag/2.12.6
+    name: graphql-tag
+    version: 2.12.6
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.7.1
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
   registry.npmjs.org/has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/has-flag/-/has-flag-3.0.0.tgz}
     name: has-flag
@@ -6005,6 +6107,14 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: registry.npmjs.org/function-bind@1.1.1
+
+  registry.npmjs.org/hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz}
+    name: hoist-non-react-statics
+    version: 3.3.2
+    dependencies:
+      react-is: registry.npmjs.org/react-is@16.13.1
+    dev: false
 
   registry.npmjs.org/js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz}
@@ -6061,6 +6171,15 @@ packages:
     name: object-inspect
     version: 1.12.3
 
+  registry.npmjs.org/optimism@0.16.2:
+    resolution: {integrity: sha512-zWNbgWj+3vLEjZNIh/okkY2EUfX+vB9TJopzIZwT1xxaMqC5hRLLraePod4c5n4He08xuXNH+zhKFFCu390wiQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/optimism/-/optimism-0.16.2.tgz}
+    name: optimism
+    version: 0.16.2
+    dependencies:
+      '@wry/context': registry.npmjs.org/@wry/context@0.7.3
+      '@wry/trie': registry.npmjs.org/@wry/trie@0.3.2
+    dev: false
+
   registry.npmjs.org/picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz}
     name: picocolors
@@ -6088,6 +6207,13 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
+
+  registry.npmjs.org/response-iterator@0.2.6:
+    resolution: {integrity: sha512-pVzEEzrsg23Sh053rmDUvLSkGXluZio0qu8VT6ukrYuvtjVfCbDZH9d6PGXb8HZfzdNZt8feXv/jvUzlhRgLnw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/response-iterator/-/response-iterator-0.2.6.tgz}
+    name: response-iterator
+    version: 0.2.6
+    engines: {node: '>=0.8'}
+    dev: false
 
   registry.npmjs.org/semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/semver/-/semver-6.3.1.tgz}
@@ -6122,11 +6248,33 @@ packages:
     dependencies:
       has-flag: registry.npmjs.org/has-flag@3.0.0
 
+  registry.npmjs.org/symbol-observable@4.0.0:
+    resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/symbol-observable/-/symbol-observable-4.0.0.tgz}
+    name: symbol-observable
+    version: 4.0.0
+    engines: {node: '>=0.10'}
+    dev: false
+
   registry.npmjs.org/to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz}
     name: to-fast-properties
     version: 2.0.0
     engines: {node: '>=4'}
+
+  registry.npmjs.org/ts-invariant@0.10.3:
+    resolution: {integrity: sha512-uivwYcQaxAucv1CzRp2n/QdYPo4ILf9VXgH19zEIjFx2EJufV16P0JtJVpYHy89DItG6Kwj2oIUjrcK5au+4tQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ts-invariant/-/ts-invariant-0.10.3.tgz}
+    name: ts-invariant
+    version: 0.10.3
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: registry.npmjs.org/tslib@2.6.0
+    dev: false
+
+  registry.npmjs.org/tslib@2.6.0:
+    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz}
+    name: tslib
+    version: 2.6.0
+    dev: false
 
   registry.npmjs.org/update-browserslist-db@1.0.11(browserslist@4.21.9):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.0.11.tgz}
@@ -6145,3 +6293,17 @@ packages:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/yallist/-/yallist-3.1.1.tgz}
     name: yallist
     version: 3.1.1
+
+  registry.npmjs.org/zen-observable-ts@1.2.5:
+    resolution: {integrity: sha512-QZWQekv6iB72Naeake9hS1KxHlotfRpe+WGNbNx5/ta+R3DNjVO2bswf63gXlWDcs+EMd7XY8HfVQyP1X6T4Zg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/zen-observable-ts/-/zen-observable-ts-1.2.5.tgz}
+    name: zen-observable-ts
+    version: 1.2.5
+    dependencies:
+      zen-observable: registry.npmjs.org/zen-observable@0.8.15
+    dev: false
+
+  registry.npmjs.org/zen-observable@0.8.15:
+    resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/zen-observable/-/zen-observable-0.8.15.tgz}
+    name: zen-observable
+    version: 0.8.15
+    dev: false

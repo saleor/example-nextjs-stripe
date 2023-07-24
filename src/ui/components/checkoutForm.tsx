@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ returnUrl }: { returnUrl: string }) {
 	const stripe = useStripe();
 	const elements = useElements();
 
@@ -26,7 +26,7 @@ export default function CheckoutForm() {
 			elements,
 			confirmParams: {
 				// Make sure to change this to your payment completion page
-				return_url: "http://localhost:3000/app-router/cart/payment",
+				return_url: returnUrl,
 			},
 		});
 

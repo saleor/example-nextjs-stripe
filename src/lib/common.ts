@@ -1,6 +1,12 @@
-import { GetCheckoutByIdDocument, type TypedDocumentString } from "@/generated/graphql";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { TypedDocumentString } from "@/generated/graphql";
+
+export const stripeAppId = `app.saleor.stripe`;
+
+export const formatMoney = (amount: number, currency: string) =>
+	new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency,
+	}).format(amount);
 
 type GraphQlError = {
 	message: string;
@@ -46,35 +52,3 @@ export async function executeGraphQL<Result, Variables>({
 
 	return body.data;
 }
-
-export async function getCheckoutFromCookiesOrRedirect() {
-	const checkoutId = cookies().get("checkoutId")?.value;
-
-	if (!checkoutId) {
-		redirect("/app-router/");
-	}
-
-	const checkout = await executeGraphQL({
-		query: GetCheckoutByIdDocument,
-		variables: {
-			id: checkoutId,
-		},
-		cache: "no-store",
-	});
-
-	if (!checkout.checkout) {
-		// https://github.com/vercel/next.js/issues/51875
-		// cookies().set("checkoutId", "");
-		redirect("/app-router/");
-	}
-
-	return checkout.checkout;
-}
-
-export const stripeAppId = `app.saleor.stripe`;
-
-export const formatMoney = (amount: number, currency: string) =>
-	new Intl.NumberFormat("en-US", {
-		style: "currency",
-		currency,
-	}).format(amount);
