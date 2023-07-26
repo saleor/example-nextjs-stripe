@@ -1,7 +1,7 @@
-import { executeGraphQL, getCheckoutFromCookiesOrRedirect } from "@/lib/app-router";
+import { getCheckoutFromCookiesOrRedirect } from "@/lib/app-router";
 import { TransactionInitializeDocument } from "@/generated/graphql";
 import { StripeComponent } from "@/ui/components/stripeComponent";
-import { stripeAppId } from "@/lib/common";
+import { executeGraphQL, stripeAppId } from "@/lib/common";
 
 export default async function CartPage() {
 	const checkout = await getCheckoutFromCookiesOrRedirect();

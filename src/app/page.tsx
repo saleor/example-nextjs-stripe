@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RootPage() {
 	return (
 		<div>
@@ -13,12 +15,12 @@ export default function RootPage() {
 					</a>
 				</li>
 				<li>
-					<a
+					<Link
 						href="/pages-router"
 						className="flex h-36 w-72 items-center justify-center rounded-md border text-2xl font-bold shadow-md transition-shadow hover:shadow-lg"
 					>
 						Next.js Pages Router
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</div>

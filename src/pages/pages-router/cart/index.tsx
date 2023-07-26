@@ -16,6 +16,7 @@ export default function CartPage() {
 	const { data: checkoutResponse, loading: checkoutLoading } = useQuery<
 		GetCheckoutByIdQuery,
 		GetCheckoutByIdQueryVariables
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- skip: !checkoutId
 	>(gql(GetCheckoutByIdDocument.toString()), { variables: { id: checkoutId! }, skip: !checkoutId });
 
 	const [createTransaction, { data: transactionInitializeResponse, loading: transactionInitializeLoading }] =
@@ -32,17 +33,24 @@ export default function CartPage() {
 			!checkoutResponse ||
 			!isStripeAppInstalled ||
 			transactionInitializeLoading ||
-			transactionInitializeResponse
+			transactionInitializeResponse ||
+			!checkoutResponse.checkout
 		) {
 			return;
 		}
 		void createTransaction({
 			variables: {
-				checkoutId: checkoutResponse.checkout!.id,
+				checkoutId: checkoutResponse.checkout.id,
 				data: {},
 			},
 		});
-	}, [checkoutResponse, isStripeAppInstalled]);
+	}, [
+		checkoutResponse,
+		createTransaction,
+		isStripeAppInstalled,
+		transactionInitializeLoading,
+		transactionInitializeResponse,
+	]);
 
 	if (!checkoutResponse || checkoutLoading) {
 		return <div>Loading…</div>;

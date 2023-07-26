@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
 import { CreateCheckoutDocument, ProductListDocument } from "@/generated/graphql";
-import { executeGraphQL } from "@/lib/app-router";
+import { executeGraphQL } from "@/lib/common";
 import { cookies } from "next/headers";
 import { formatMoney } from "@/lib/common";
 

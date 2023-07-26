@@ -54,7 +54,7 @@ export default function CartPaymentPage() {
 				setState("error");
 				return;
 			});
-	}, [checkoutId, searchParams.payment_intent, searchParams.payment_intent_client_secret]);
+	}, [checkoutId, router, searchParams]);
 
 	if (state === "error") {
 		return (
