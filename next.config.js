@@ -4,7 +4,7 @@ const { hostname } = new URL(process.env.SALEOR_API_URL);
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: [hostname],
+		remotePatterns: [{ hostname: "**.s3.amazonaws.com", pathname: "/**" }, { hostname }],
 	},
 	experimental: {
 		serverActions: true,
