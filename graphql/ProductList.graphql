@@ -2,7 +2,7 @@ query ProductList {
 	products(
 		first: 1
 		channel: "default-channel"
-		where: { isAvailable: true }
+		where: { isAvailable: true, isPublished: true, giftCard: false, isVisibleInListing: true }
 		sortBy: { field: PRICE, direction: DESC }
 	) {
 		edges {
